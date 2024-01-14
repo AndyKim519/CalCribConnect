@@ -34,8 +34,8 @@ const partySchema = new mongoose.Schema({
   name: String,
   description: String,
   current: Number, // current number of people in the party
-  members: [
-    // list of members in the party
+  users: [
+    // list of users in the party
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -89,7 +89,12 @@ const unitSchema = new mongoose.Schema({
 const cribSchema = new mongoose.Schema({
   // add reviews and ratings later
   name: String,
-  address: {},
+  address: {
+    address: String,
+    city: String,
+    state: String,
+    zip: Number,
+  },
   reviews: [
     {
       author: mongoose.Schema.Types.ObjectId,
@@ -120,4 +125,4 @@ const Party = mongoose.model("Party", partySchema);
 const Unit = mongoose.model("Unit", unitSchema);
 const Crib = mongoose.model("Crib", cribSchema);
 
-module.export = { User, Party, Unit, Crib };
+module.exports = { User, Party, Unit, Crib };
